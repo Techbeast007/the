@@ -1,0 +1,199 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: #000000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+body {
+  /* Lenis smooth scrolling needs natural scroll height */
+  overflow-y: auto;
+}
+
+.fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 1;
+}
+
+.scroll-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500vh;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gradient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  background-color: #030303;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Premium Awwwards-style glowing orbs (Mobile Optimized) */
+.gradient-bg::before,
+.gradient-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  animation: orb-drift 20s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+.gradient-bg::before {
+  width: 100vw;
+  height: 100vw;
+  min-width: 600px;
+  min-height: 600px;
+  background: radial-gradient(circle closest-side, rgba(180, 20, 50, 0.25), transparent 100%);
+  top: -20%;
+  left: -20%;
+}
+
+.gradient-bg::after {
+  width: 120vw;
+  height: 120vw;
+  min-width: 700px;
+  min-height: 700px;
+  background: radial-gradient(circle closest-side, rgba(20, 10, 50, 0.28), transparent 100%);
+  bottom: -20%;
+  right: -20%;
+  animation-delay: -10s;
+  animation-duration: 25s;
+}
+
+@keyframes orb-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15vw, 10vh) scale(1.1); }
+  100% { transform: translate(-10vw, -10vh) scale(0.9); }
+}
+
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.3;
+  mix-blend-mode: multiply;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  font-weight: 300;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.text-group {
+  position: absolute;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.title-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(20px);
+  color: #ffffff;
+  mix-blend-mode: difference;
+  margin: 0;
+}
+
+.subtitle-text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  color: #ffffff;
+  mix-blend-mode: difference;
+  margin: 0;
+}
+
+.stoic-paragraph {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  color: #dddddd;
+  mix-blend-mode: difference;
+}
+
+.final-poetry {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  opacity: 0;
+  margin-bottom: 1rem;
+}
+
+.handwritten-container {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  opacity: 0; /* Handled by GSAP later */
+}
+
+.handwritten-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.handwritten-svg path {
+  fill: none;
+  stroke: #111;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* Will be animated with GSAP drawSVG or strokeDasharray */
+}
+
