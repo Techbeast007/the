@@ -279,12 +279,12 @@ export default function TextOverlay() {
           let drawP = (p - 0.94) / 0.04;
           drawP = Math.max(0, Math.min(1, drawP));
           const easeDrawP = 1 - Math.pow(1 - drawP, 2);
-          const offset = 300 - (easeDrawP * 300);
+          const offset = 500 - (easeDrawP * 500);
           textPath1Ref.current.style.strokeDashoffset = offset;
 
           let drawP2 = (p - 0.96) / 0.04;
           drawP2 = Math.max(0, Math.min(1, drawP2));
-          const offset2 = 400 - (drawP2 * 400);
+          const offset2 = 650 - (drawP2 * 650);
           textPath2Ref.current.style.strokeDashoffset = offset2;
 
           if (p > 0.98) {
@@ -298,8 +298,8 @@ export default function TextOverlay() {
           }
         } else {
           svggroupRef.current.style.opacity = 0;
-          textPath1Ref.current.style.strokeDashoffset = 300;
-          textPath2Ref.current.style.strokeDashoffset = 400;
+          textPath1Ref.current.style.strokeDashoffset = 500;
+          textPath2Ref.current.style.strokeDashoffset = 650;
           textPath1Ref.current.style.fill = 'transparent';
           textPath2Ref.current.style.fill = 'transparent';
         }
@@ -347,19 +347,19 @@ export default function TextOverlay() {
         ref={svggroupRef}
         style={{ opacity: 0 }}
       >
-        <svg className="handwritten-svg" viewBox="0 0 500 120">
+        <svg className="handwritten-svg" viewBox="0 0 600 150">
           <text
             ref={textPath1Ref}
             x="50%"
             y="40%"
             textAnchor="middle"
             fontFamily="'Alex Brush', cursive"
-            fontSize="32"
+            fontSize="46"
             fill="transparent"
             stroke="#ffffff"
             strokeWidth="1"
-            strokeDasharray="300"
-            strokeDashoffset="300"
+            strokeDasharray="500"
+            strokeDashoffset="500"
           >
             Allow the idea...
           </text>
@@ -369,12 +369,12 @@ export default function TextOverlay() {
             y="85%"
             textAnchor="middle"
             fontFamily="'Alex Brush', cursive"
-            fontSize="32"
+            fontSize="46"
             fill="transparent"
             stroke="#ffffff"
             strokeWidth="1"
-            strokeDasharray="400"
-            strokeDashoffset="400"
+            strokeDasharray="650"
+            strokeDashoffset="650"
           >
             to become the experience.
           </text>

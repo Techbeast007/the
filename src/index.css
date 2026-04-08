@@ -424,11 +424,11 @@ h1, h2, h3, p {
 
 .handwritten-container {
   position: absolute;
-  top: 75%;
+  top: 72%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 600px;
+  width: 92%;
+  max-width: 900px;
   text-align: center;
   opacity: 0;
   pointer-events: none;
@@ -458,27 +458,32 @@ h1, h2, h3, p {
   }
 
   .fill-hero {
-    font-size: clamp(2.5rem, 12vw, 5rem);
+    font-size: clamp(2.8rem, 14vw, 5.5rem);
   }
 
   .fill-statement {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(2.2rem, 9vw, 4.5rem);
   }
 
   .fill-caption {
-    font-size: clamp(1.2rem, 5vw, 2rem);
-    letter-spacing: 0.1em;
+    font-size: clamp(1.3rem, 6vw, 2.2rem);
+    letter-spacing: 0.08em;
   }
 
   .fill-body {
-    font-size: clamp(1.15rem, 4.5vw, 1.7rem);
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
   }
 
   .fill-section--left-top,
   .fill-section--right-bottom,
   .fill-section--left-center,
   .fill-section--right-center {
-    max-width: 88vw !important;
+    max-width: 92vw !important;
+  }
+
+  .handwritten-container {
+    width: 95%;
+    max-width: none;
   }
 
   .scroll-indicator {
@@ -501,18 +506,18 @@ h1, h2, h3, p {
 
 @media (max-width: 480px) {
   .fill-hero {
-    font-size: clamp(2rem, 11vw, 3.5rem);
+    font-size: clamp(2.4rem, 13vw, 4rem);
   }
   
   .fill-statement {
-    font-size: clamp(1.8rem, 7vw, 3rem);
+    font-size: clamp(2rem, 8vw, 3.5rem);
   }
 
   .fill-caption {
-    font-size: clamp(1.1rem, 5vw, 1.6rem);
+    font-size: clamp(1.2rem, 5.5vw, 1.8rem);
   }
 
   .fill-body {
-    font-size: clamp(1.05rem, 4.5vw, 1.4rem);
+    font-size: clamp(1.1rem, 5vw, 1.5rem);
   }
 }
