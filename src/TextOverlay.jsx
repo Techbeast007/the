@@ -32,8 +32,9 @@ const SECTIONS = [
     lines: [
       { text: 'We fall in love', className: 'fill-hero' },
     ],
-    range: [0.02, 0.10],
+    range: [0.0, 0.10],
     layout: 'left-top',
+    prefilled: true,
   },
   {
     id: 'act-1b',
@@ -155,7 +156,7 @@ const LAYOUT_STYLES = {
     right: 'auto',
     textAlign: 'center',
     transform: 'translateX(-50%)',
-    maxWidth: '600px',
+    maxWidth: '800px',
   },
 };
 
@@ -193,11 +194,25 @@ export default function TextOverlay() {
         // fadeOut: rangeEnd  →  rangeEnd + FADE_DURATION
         const fadeInStart = rangeStart - FADE_DURATION;
         const fadeOutEnd = rangeEnd + FADE_DURATION;
+        const isPrefilled = section.prefilled;
 
         let opacity = 0;
         let translateY = 25;
 
-        if (p >= fadeInStart && p < rangeStart) {
+        if (isPrefilled) {
+          // Prefilled sections start visible, only fade out
+          if (p <= rangeEnd) {
+            opacity = 1;
+            translateY = 0;
+          } else if (p <= fadeOutEnd) {
+            const t = 1 - ((p - rangeEnd) / FADE_DURATION);
+            opacity = t;
+            translateY = -15 * (1 - t);
+          } else {
+            opacity = 0;
+            translateY = -15;
+          }
+        } else if (p >= fadeInStart && p < rangeStart) {
           // Fading in
           const t = (p - fadeInStart) / FADE_DURATION;
           opacity = t;
@@ -229,24 +244,28 @@ export default function TextOverlay() {
 
         // Word-by-word fill
         if (totalWords > 0 && opacity > 0) {
-          const sectionProgress = Math.max(0, Math.min(1, (p - rangeStart) / (rangeEnd - rangeStart)));
-          const fillCount = sectionProgress * totalWords;
+          if (isPrefilled) {
+            // Prefilled: all words start filled
+            words.forEach((word) => word.classList.add('fill-word--active'));
+          } else {
+            const sectionProgress = Math.max(0, Math.min(1, (p - rangeStart) / (rangeEnd - rangeStart)));
+            const fillCount = sectionProgress * totalWords;
 
-          words.forEach((word, i) => {
-            if (i < Math.floor(fillCount)) {
-              word.classList.add('fill-word--active');
-            } else if (i === Math.floor(fillCount)) {
-              // Current word — partial fill via opacity blend
-              const partial = fillCount - Math.floor(fillCount);
-              if (partial > 0.3) {
+            words.forEach((word, i) => {
+              if (i < Math.floor(fillCount)) {
                 word.classList.add('fill-word--active');
+              } else if (i === Math.floor(fillCount)) {
+                const partial = fillCount - Math.floor(fillCount);
+                if (partial > 0.3) {
+                  word.classList.add('fill-word--active');
+                } else {
+                  word.classList.remove('fill-word--active');
+                }
               } else {
                 word.classList.remove('fill-word--active');
               }
-            } else {
-              word.classList.remove('fill-word--active');
-            }
-          });
+            });
+          }
         } else if (totalWords > 0) {
           // Section not visible — reset all words
           words.forEach((word) => word.classList.remove('fill-word--active'));

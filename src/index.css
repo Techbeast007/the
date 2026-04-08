@@ -376,20 +376,20 @@ h1, h2, h3, p {
 
 .fill-caption {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  font-weight: 400;
+  font-size: clamp(1.5rem, 4.5vw, 3rem);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  line-height: 2;
+  letter-spacing: 0.15em;
+  line-height: 1.8;
   mix-blend-mode: difference;
 }
 
 .fill-caption .fill-word {
-  color: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.10);
 }
 
 .fill-caption .fill-word--active {
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .fill-statement {
@@ -404,18 +404,18 @@ h1, h2, h3, p {
 
 .fill-body {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(1.15rem, 2.2vw, 1.65rem);
-  font-weight: 300;
-  line-height: 2;
-  letter-spacing: 0.03em;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
 }
 
 .fill-body .fill-word {
-  color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.10);
 }
 
 .fill-body .fill-word--active {
-  color: rgba(200, 200, 210, 0.85);
+  color: rgba(230, 230, 235, 0.95);
 }
 
 /* ─────────────────────────────────────────────
@@ -466,12 +466,12 @@ h1, h2, h3, p {
   }
 
   .fill-caption {
-    font-size: clamp(1rem, 4vw, 1.4rem);
-    letter-spacing: 0.12em;
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    letter-spacing: 0.1em;
   }
 
   .fill-body {
-    font-size: clamp(1rem, 4vw, 1.3rem);
+    font-size: clamp(1.15rem, 4.5vw, 1.7rem);
   }
 
   .fill-section--left-top,
@@ -506,5 +506,13 @@ h1, h2, h3, p {
   
   .fill-statement {
     font-size: clamp(1.8rem, 7vw, 3rem);
+  }
+
+  .fill-caption {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+  }
+
+  .fill-body {
+    font-size: clamp(1.05rem, 4.5vw, 1.4rem);
   }
 }
